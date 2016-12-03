@@ -9,7 +9,6 @@ angular.module('shortly.services', [])
     })
     .then(function(resp) {
       // console.log(resp.data);
-      console.log('Get Called');
       return resp.data;
     });
   };
