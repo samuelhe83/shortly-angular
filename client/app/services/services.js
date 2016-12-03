@@ -17,10 +17,14 @@ angular.module('shortly.services', [])
     return $http({
       method: 'POST',
       url: '/api/links',
-      data: link
+      'Content-Type': 'json',
+      data: JSON.stringify(link)
     })
     .then(function(resp) {
       return resp;
+    })
+    .catch(function(err) {
+      console.error(err);
     });
   };
 
@@ -39,6 +43,7 @@ angular.module('shortly.services', [])
   // after you signin/signup open devtools, click resources,
   // then localStorage and you'll see your token from the server
   var signin = function (user) {
+    console.log(user);
     return $http({
       method: 'POST',
       url: '/api/users/signin',
@@ -65,6 +70,7 @@ angular.module('shortly.services', [])
   };
 
   var signout = function () {
+    console.log('Is this on?');
     $window.localStorage.removeItem('com.shortly');
     $location.path('/signin');
   };
